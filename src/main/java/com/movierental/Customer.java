@@ -19,20 +19,29 @@ public class Customer {
     return name;
   }
 
-  public String statement() {
-    String result = "Rental Record for " + getName() + "\n";
-    for (Rental each : rentals) {
-      //show figures for this rental
-      result += "\t" + each.getMovie().getTitle() + "\t" +
-          String.valueOf(each.amount()) + "\n";
-    }
 
-    //add footer lines result
-    result += "Amount owed is " + String.valueOf(totalAmount()) + "\n";
-    result += "You earned " + String.valueOf(totalFrequentRenterPoints())
-        + " frequent renter points";
-    return result;
+  public String statement() {
+    return new textStatement().display(this);
   }
+
+  private class textStatement{
+    public String display(Customer customer ) {
+      String result = "Rental Record for " + customer.getName() + "\n";
+      for (Rental each : customer.rentals) {
+        //show figures for this rental
+        result += "\t" + each.getMovie().getTitle() + "\t" +
+                String.valueOf(each.amount()) + "\n";
+      }
+
+      //add footer lines result
+      result += "Amount owed is " + String.valueOf(customer.totalAmount()) + "\n";
+      result += "You earned " + String.valueOf(customer.totalFrequentRenterPoints())
+              + " frequent renter points";
+      return result;
+    }
+  }
+
+
 
   private int totalFrequentRenterPoints() {
     int frequentRenterPoints = 0;
@@ -50,7 +59,7 @@ public class Customer {
     return totalAmount;
   }
 
-  public String htmlstatement() {
+  public String htmlStatement() {
     String result = "<h1>Rental Record for <b>" + getName() + "</b></h1><br/>";
     for (Rental each : rentals) {
       //show figures for this rental

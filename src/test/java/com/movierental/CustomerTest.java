@@ -35,7 +35,7 @@ public class CustomerTest {
                 "Toy Story 1.5<br/>" +
                 "Avengers 12.0<br/>" +
                 "Amount owed is <b>17.0</b><br/>" +
-                "You earned <b>4</b> frequent renter points", customer.htmlstatement());
+                "You earned <b>4</b> frequent renter points", customer.htmlStatement());
     }
 
 }
